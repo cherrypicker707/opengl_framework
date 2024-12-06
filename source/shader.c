@@ -1,10 +1,10 @@
 #include "shader.h"
 #include "file.h"
 
+#include <glad/glad.h>
+
 #include <stdio.h>
 #include <stdlib.h>
-
-#include <glad/glad.h>
 
 unsigned int shaderCreate(const char *path, unsigned int type)
 {
@@ -20,8 +20,6 @@ unsigned int shaderCreate(const char *path, unsigned int type)
     shaderShowCompilingErrors(shader);
 
     return shader;
-
-    return 0;
 }
 
 void shaderShowCompilingErrors(unsigned int shader)

@@ -1,10 +1,10 @@
 #include "program.h"
 #include "shader.h"
 
+#include <glad/glad.h>
+
 #include <stddef.h>
 #include <stdio.h>
-
-#include <glad/glad.h>
 
 unsigned int programCreate(const char *vertexShaderPath, const char *fragmentShaderPath)
 {
