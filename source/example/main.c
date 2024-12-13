@@ -1,5 +1,5 @@
-#include "program.h"
-#include "window.h"
+#include "../program.h"
+#include "../window.h"
 
 #include <glad/glad.h>
 
@@ -7,8 +7,8 @@
 
 #include <assert.h>
 
-#define VERTEX_SHADER_PATH "../resources/exemplaryVertexShader.glsl"
-#define FRAGMENT_SHADER_PATH "../resources/exemplaryFragmentShader.glsl"
+#define VERTEX_SHADER_PATH "../resources/exemplary_vertex_shader.glsl"
+#define FRAGMENT_SHADER_PATH "../resources/exemplary_fragment_shader.glsl"
 
 int main()
 {
