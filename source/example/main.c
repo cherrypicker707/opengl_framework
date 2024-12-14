@@ -1,10 +1,7 @@
-#include "../program.h"
-#include "../window.h"
-
+#include <opengl_framework/program.h>
+#include <opengl_framework/window.h>
 #include <glad/glad.h>
-
 #include <GLFW/glfw3.h>
-
 #include <assert.h>
 
 #define VERTEX_SHADER_PATH "../resources/exemplary_vertex_shader.glsl"

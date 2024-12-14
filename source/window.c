@@ -1,9 +1,6 @@
-#include "window.h"
-
+#include <opengl_framework/window.h>
 #include <glad/glad.h>
-
 #include <GLFW/glfw3.h>
-
 #include <assert.h>
 #include <stdbool.h>
 #include <stdlib.h>

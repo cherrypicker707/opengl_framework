@@ -1,8 +1,6 @@
-#include "shader.h"
-#include "file.h"
-
+#include <opengl_framework/shader.h>
+#include <opengl_framework/file.h>
 #include <glad/glad.h>
-
 #include <stdio.h>
 #include <stdlib.h>
 

@@ -1,8 +1,5 @@
 # CMake
 build/
 
-# Glad
-glad/
-
 # clangd
 .cache/
