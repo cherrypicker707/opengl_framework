@@ -1,2 +1,2 @@
 # OpenGL Framework
-This is just a bunch of basic C functions, which can be used in some simple OpenGL projects.
+Just a bunch of C functions, which utilize OpenGL. It was created primarly in order to be used in my other projects.
