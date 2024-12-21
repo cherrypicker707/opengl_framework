@@ -1,5 +1,6 @@
 #include <opengl_framework/program.h>
 #include <opengl_framework/window.h>
+#include <opengl_framework/shape.h>
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <assert.h>
@@ -11,35 +12,21 @@ int main()
 {
     Window *window = windowCreate(1280, 720, "Test Program");
     unsigned int program = programCreate(VERTEX_SHADER_PATH, FRAGMENT_SHADER_PATH);
-
-    float vertex[] = {0.0f, 0.5f, 0.5f, -0.5f, -0.5f, -0.5f};
-    unsigned int vao, vbo;
-
-    glGenVertexArrays(1, &vao);
-    glGenBuffers(1, &vbo);
-    glBindVertexArray(vao);
-    glBindBuffer(GL_ARRAY_BUFFER, vbo);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(vertex), vertex, GL_STATIC_DRAW);
-    glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), (void *)0);
-    glEnableVertexAttribArray(0);
-    glBindVertexArray(0);
+    Shape *square = shapeCreateSquare();
 
     while (windowIsOpen(window))
     {
         windowClear(window, 0.0f, 0.0f, 0.0f);
 
         glUseProgram(program);
-        glBindVertexArray(vao);
-        glDrawArrays(GL_TRIANGLES, 0, 3);
+        shapeDraw(square);
 
         windowUpdate(window);
     }
 
     programDestroy(program);
     windowDestroy(window);
-
-    glDeleteVertexArrays(1, &vao);
-    glDeleteBuffers(1, &vbo);
+    shapeDestroy(square);
 
     return 0;
 }
