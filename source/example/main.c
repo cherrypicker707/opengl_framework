@@ -2,6 +2,7 @@
 #include <opengl_framework/window.h>
 #include <opengl_framework/shape.h>
 #include <opengl_framework/matrix.h>
+#include <opengl_framework/texture.h>
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <assert.h>
@@ -13,7 +14,8 @@ int main()
 {
     Window *window = windowCreate(1280, 720, "Test Program");
     unsigned int program = programCreate(VERTEX_SHADER_PATH, FRAGMENT_SHADER_PATH);
-    Shape *square = shapeCreateSquare();
+    Shape *square = shapeCreateTexturedSquare();
+    unsigned int texture = textureCreateCircle(128);
 
     glUseProgram(program);
 
@@ -40,6 +42,7 @@ int main()
     programDestroy(program);
     windowDestroy(window);
     shapeDestroy(square);
+    textureDestroy(texture);
 
     return 0;
 }

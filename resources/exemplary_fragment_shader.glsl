@@ -1,8 +1,12 @@
 #version 460 core
 
+in vec2 vertexTexturePosition;
+
 out vec4 fragmentColor;
+
+uniform sampler2D circleTexture;
 
 void main()
 {
-    fragmentColor = vec4(1.0, 0.0, 0.0, 1.0);
+    fragmentColor = texture(circleTexture, vertexTexturePosition);
 }
