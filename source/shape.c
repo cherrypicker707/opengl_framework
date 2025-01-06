@@ -2,6 +2,11 @@
 #include <glad/glad.h>
 #include <stdlib.h>
 
+#define ATTRIBUTE_LOCATION_POSITION 0
+#define ATTRIBUTE_LOCATION_NORMAL 1
+#define ATTRIBUTE_LOCATION_COLOR 2
+#define ATTRIBUTE_LOCATION_TEXTURE_POSITION 3
+
 struct Shape
 {
     unsigned int vertexArray, arrayBuffer, elementArrayBuffer;
@@ -19,8 +24,8 @@ Shape *shapeCreateSquare()
     glBindBuffer(GL_ARRAY_BUFFER, shape->arrayBuffer);
     float vertex[] = {1.0f, 1.0f, 0.0f, -1.0f, 1.0f, 0.0f, -1.0f, -1.0f, 0.0f, 1.0f, -1.0f, 0.0f};
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertex), vertex, GL_STATIC_DRAW);
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void *)0);
-    glEnableVertexAttribArray(0);
+    glVertexAttribPointer(ATTRIBUTE_LOCATION_POSITION, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void *)(0 * sizeof(float)));
+    glEnableVertexAttribArray(ATTRIBUTE_LOCATION_POSITION);
 
     glGenBuffers(1, &shape->elementArrayBuffer);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, shape->elementArrayBuffer);
@@ -39,12 +44,12 @@ Shape *shapeCreateTexturedSquare()
 
     glGenBuffers(1, &shape->arrayBuffer);
     glBindBuffer(GL_ARRAY_BUFFER, shape->arrayBuffer);
-    float vertex[] = {1.0f, 1.0f, 0.0f, -1.0f, 1.0f, 0.0f, -1.0f, -1.0f, 0.0f, 1.0f, -1.0f, 0.0f};
+    float vertex[] = {1.0f, 1.0f, 0.0f, 1.0f, 1.0f, -1.0f, 1.0f, 0.0f, 0.0f, 1.0f, -1.0f, -1.0f, 0.0f, 0.0f, 0.0f, 1.0f, -1.0f, 0.0f, 1.0f, 0.0f};
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertex), vertex, GL_STATIC_DRAW);
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void *)0);
-    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void *)0);
-    glEnableVertexAttribArray(0);
-    glEnableVertexAttribArray(1);
+    glVertexAttribPointer(ATTRIBUTE_LOCATION_POSITION, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void *)(0 * sizeof(float)));
+    glEnableVertexAttribArray(ATTRIBUTE_LOCATION_POSITION);
+    glVertexAttribPointer(ATTRIBUTE_LOCATION_TEXTURE_POSITION, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void *)(3 * sizeof(float)));
+    glEnableVertexAttribArray(ATTRIBUTE_LOCATION_TEXTURE_POSITION);
 
     glGenBuffers(1, &shape->elementArrayBuffer);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, shape->elementArrayBuffer);
