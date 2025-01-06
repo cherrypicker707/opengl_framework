@@ -30,9 +30,11 @@ int main()
 
     glUniformMatrix4fv(glGetUniformLocation(program, "transformation"), 1, true, matrix);
 
+    windowSetBackgroundColor(window, 0.0f, 0.0f, 0.2f);
+
     while (windowIsOpen(window))
     {
-        windowClear(window, 0.0f, 0.0f, 0.0f);
+        windowClear(window);
 
         shapeDraw(square);
 

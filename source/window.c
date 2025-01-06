@@ -8,6 +8,7 @@
 struct Window
 {
     GLFWwindow *window;
+    float backgroundColorRed, backgroundColorGreen, backgroundColorBlue;
 };
 
 Window *windowCreate(int width, int height, const char *title)
@@ -28,6 +29,10 @@ Window *windowCreate(int width, int height, const char *title)
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
+    window->backgroundColorRed = 0.0f;
+    window->backgroundColorGreen = 0.0f;
+    window->backgroundColorBlue = 0.0f;
+
     return window;
 }
 
@@ -45,7 +50,20 @@ bool windowIsOpen(Window *window)
     return !glfwWindowShouldClose(window->window);
 }
 
-void windowClear(Window *window, float red, float green, float blue)
+void windowSetBackgroundColor(Window *window, float red, float green, float blue)
+{
+    window->backgroundColorRed = red;
+    window->backgroundColorGreen = green;
+    window->backgroundColorBlue = blue;
+}
+
+void windowClear(Window *window)
+{
+    glClearColor(window->backgroundColorRed, window->backgroundColorGreen, window->backgroundColorBlue, 1.0f);
+    glClear(GL_COLOR_BUFFER_BIT);
+}
+
+void windowClearInColor(Window *window, float red, float green, float blue)
 {
     glClearColor(red, green, blue, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);

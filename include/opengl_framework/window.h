@@ -13,7 +13,11 @@ void windowDestroy(Window *window);
 
 bool windowIsOpen(Window *window);
 
-void windowClear(Window *window, float red, float green, float blue);
+void windowSetBackgroundColor(Window *window, float red, float green, float blue);
+
+void windowClear(Window *window);
+
+void windowClearInColor(Window *window, float red, float green, float blue);
 
 void windowUpdate(Window *window);
 
