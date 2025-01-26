@@ -4,12 +4,12 @@
 #include <stddef.h>
 #include <stdio.h>
 
-unsigned int programCreate(const char *vertexShaderPath, const char *fragmentShaderPath)
+Program programCreate(const char *vertexShaderPath, const char *fragmentShaderPath)
 {
-    unsigned int vertexShader = shaderCreate(vertexShaderPath, GL_VERTEX_SHADER);
-    unsigned int fragmentShader = shaderCreate(fragmentShaderPath, GL_FRAGMENT_SHADER);
+    Shader vertexShader = shaderCreate(vertexShaderPath, GL_VERTEX_SHADER);
+    Shader fragmentShader = shaderCreate(fragmentShaderPath, GL_FRAGMENT_SHADER);
 
-    unsigned int program = glCreateProgram();
+    Program program = glCreateProgram();
     glAttachShader(program, vertexShader);
     glAttachShader(program, fragmentShader);
     glLinkProgram(program);
@@ -22,7 +22,12 @@ unsigned int programCreate(const char *vertexShaderPath, const char *fragmentSha
     return program;
 }
 
-void programShowLinkingErrors(unsigned int program)
+void programDestroy(Program program)
+{
+    glDeleteProgram(program);
+}
+
+void programShowLinkingErrors(Program program)
 {
     int status;
     glGetProgramiv(program, GL_LINK_STATUS, &status);
@@ -35,7 +40,7 @@ void programShowLinkingErrors(unsigned int program)
     }
 }
 
-void programDestroy(unsigned int program)
+void programUse(Program program)
 {
-    glDeleteProgram(program);
+    glUseProgram(program);
 }

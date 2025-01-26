@@ -1,10 +1,14 @@
 #ifndef PROGRAM_H
 #define PROGRAM_H
 
-unsigned int programCreate(const char *vertexShaderPath, const char *fragmentShaderPath);
+typedef unsigned int Program;
 
-void programShowLinkingErrors(unsigned int program);
+Program programCreate(const char *vertexShaderPath, const char *fragmentShaderPath);
 
-void programDestroy(unsigned int program);
+void programDestroy(Program program);
+
+void programShowLinkingErrors(Program program);
+
+void programUse(Program program);
 
 #endif

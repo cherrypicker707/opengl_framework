@@ -1,7 +1,7 @@
 #include <opengl_framework/texture.h>
 #include <glad/glad.h>
 
-unsigned int textureCreateCircle(unsigned int width)
+Texture textureCreateCircle(unsigned int width)
 {
     unsigned int pixelCount = width * width;
     unsigned char data[4 * pixelCount];
@@ -25,7 +25,7 @@ unsigned int textureCreateCircle(unsigned int width)
         data[index] = 0;
     }
 
-    unsigned int texture;
+    Texture texture;
     glGenTextures(1, &texture);
     glBindTexture(GL_TEXTURE_2D, texture);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
@@ -38,7 +38,7 @@ unsigned int textureCreateCircle(unsigned int width)
     return texture;
 }
 
-void textureDestroy(unsigned int texture)
+void textureDestroy(Texture texture)
 {
     glDeleteTextures(1, &texture);
 }

@@ -7,12 +7,6 @@
 #define ATTRIBUTE_LOCATION_COLOR 2
 #define ATTRIBUTE_LOCATION_TEXTURE_POSITION 3
 
-struct Shape
-{
-    unsigned int vertexArray, arrayBuffer, elementArrayBuffer;
-    unsigned int vertexCount, indexCount;
-};
-
 Shape *shapeCreateSquare()
 {
     Shape *shape = malloc(sizeof(Shape));

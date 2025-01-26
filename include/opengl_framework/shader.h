@@ -1,10 +1,13 @@
 #ifndef SHADER_H
 #define SHADER_H
 
-unsigned int shaderCreate(const char *path, unsigned int type);
+typedef unsigned int Shader;
+typedef unsigned int ShaderType;
 
-void shaderShowCompilingErrors(unsigned int shader);
+Shader shaderCreate(const char *path, ShaderType shaderType);
 
-void shaderDestroy(unsigned int shader);
+void shaderShowCompilingErrors(Shader shader);
+
+void shaderDestroy(Shader shader);
 
 #endif

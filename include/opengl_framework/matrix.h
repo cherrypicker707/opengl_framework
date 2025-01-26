@@ -1,18 +1,27 @@
 #ifndef MATRIX_H
 #define MATRIX_H
 
-void matrixClear(float *matrix);
+typedef float Matrix[16];
 
-void matrixSetIdentity(float *matrix);
+/*
+ * [  0  1  2  3 ]
+ * [  4  5  6  7 ]
+ * [  8  9 10 11 ]
+ * [ 12 13 14 15 ]
+ */
 
-void matrixSetScaling(float *matrix, float x, float y, float z);
+void matrixClear(Matrix matrix);
 
-void matrixSetTranslation(float *matrix, float x, float y, float z);
+void matrixSetIdentity(Matrix matrix);
 
-void matrixSetRotation(float *matrix, float x, float y, float z);
+void matrixSetScaling(Matrix matrix, float x, float y, float z);
 
-void matrixSetProduct(float *matrix, float *left, float *right);
+void matrixSetTranslation(Matrix matrix, float x, float y, float z);
 
-void matrixTransform(float *matrix, float *other);
+void matrixSetRotation(Matrix matrix, float x, float y, float z);
+
+void matrixSetProduct(Matrix matrix, Matrix left, Matrix right);
+
+void matrixTransform(Matrix matrix, Matrix other);
 
 #endif

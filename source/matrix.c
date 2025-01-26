@@ -2,13 +2,13 @@
 #include <math.h>
 #include <string.h>
 
-void matrixClear(float *matrix)
+void matrixClear(Matrix matrix)
 {
     for (int index = 0; index < 16; index++)
         matrix[index] = 0.0f;
 }
 
-void matrixSetIdentity(float *matrix)
+void matrixSetIdentity(Matrix matrix)
 {
     matrixClear(matrix);
 
@@ -16,7 +16,7 @@ void matrixSetIdentity(float *matrix)
         matrix[index * 4 + index] = 1.0f;
 }
 
-void matrixSetScaling(float *matrix, float x, float y, float z)
+void matrixSetScaling(Matrix matrix, float x, float y, float z)
 {
     matrixClear(matrix);
 
@@ -26,7 +26,7 @@ void matrixSetScaling(float *matrix, float x, float y, float z)
     matrix[15] = 1.0f;
 }
 
-void matrixSetTranslation(float *matrix, float x, float y, float z)
+void matrixSetTranslation(Matrix matrix, float x, float y, float z)
 {
     matrixSetIdentity(matrix);
 
@@ -35,7 +35,7 @@ void matrixSetTranslation(float *matrix, float x, float y, float z)
     matrix[11] = z;
 }
 
-void matrixSetRotation(float *matrix, float x, float y, float z)
+void matrixSetRotation(Matrix matrix, float x, float y, float z)
 {
     matrix[0] = cos(y) * cos(z);
     matrix[1] = sin(x) * sin(y) * cos(z) - cos(x) * sin(z);
@@ -58,7 +58,7 @@ void matrixSetRotation(float *matrix, float x, float y, float z)
     matrix[15] = 1.0f;
 }
 
-void matrixSetProduct(float *matrix, float *left, float *right)
+void matrixSetProduct(Matrix matrix, Matrix left, Matrix right)
 {
     for (int index = 0; index < 16; index++)
     {
@@ -71,7 +71,7 @@ void matrixSetProduct(float *matrix, float *left, float *right)
     }
 }
 
-void matrixTransform(float *matrix, float *other)
+void matrixTransform(Matrix matrix, Matrix other)
 {
     float copy[16];
     memcpy(copy, matrix, 16 * sizeof(float));

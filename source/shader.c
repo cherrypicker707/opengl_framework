@@ -4,11 +4,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-unsigned int shaderCreate(const char *path, unsigned int type)
+Shader shaderCreate(const char *path, ShaderType shaderType)
 {
     char *source = fileGetContent(path);
 
-    unsigned int shader = glCreateShader(type);
+    unsigned int shader = glCreateShader(shaderType);
     glShaderSource(shader, 1, (const char *const *)&source, NULL);
     glCompileShader(shader);
 
@@ -20,7 +20,7 @@ unsigned int shaderCreate(const char *path, unsigned int type)
     return shader;
 }
 
-void shaderShowCompilingErrors(unsigned int shader)
+void shaderShowCompilingErrors(Shader shader)
 {
     int status;
     glGetShaderiv(shader, GL_COMPILE_STATUS, &status);
@@ -33,7 +33,7 @@ void shaderShowCompilingErrors(unsigned int shader)
     }
 }
 
-void shaderDestroy(unsigned int shader)
+void shaderDestroy(Shader shader)
 {
     glDeleteShader(shader);
 }

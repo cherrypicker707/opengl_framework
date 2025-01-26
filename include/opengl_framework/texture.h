@@ -1,8 +1,10 @@
 #ifndef TEXTURE_H
 #define TEXTURE_H
 
-unsigned int textureCreateCircle(unsigned int width);
+typedef unsigned int Texture;
 
-void textureDestroy(unsigned int texture);
+Texture textureCreateCircle(unsigned int width);
+
+void textureDestroy(Texture texture);
 
 #endif
