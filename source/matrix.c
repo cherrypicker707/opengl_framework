@@ -71,6 +71,28 @@ void matrixSetProduct(Matrix matrix, Matrix left, Matrix right)
     }
 }
 
+void matrixSetOrthographicProjection(float *matrix, float aspect, float scale, float nearPlane, float farPlane)
+{
+    matrixClear(matrix);
+
+    matrix[0] = scale / aspect;
+    matrix[5] = scale;
+    matrix[10] = -2.0f / (nearPlane / farPlane);
+    matrix[11] = (nearPlane + farPlane) / (nearPlane - farPlane);
+    matrix[15] = 1.0f;
+}
+
+void matrixSetPerspectiveProjection(Matrix matrix, float aspect, float fieldOfView, float nearPlane, float farPlane)
+{
+    matrixClear(matrix);
+
+    matrix[0] = 1.0f / (tan(fieldOfView / 2.0f) * aspect);
+    matrix[5] = 1.0f / tan(fieldOfView / 2.0f);
+    matrix[10] = (nearPlane + farPlane) / (nearPlane - farPlane);
+    matrix[11] = -2.0f * nearPlane * farPlane / (nearPlane - farPlane);
+    matrix[14] = -1;
+}
+
 void matrixTransform(Matrix matrix, Matrix other)
 {
     float copy[16];

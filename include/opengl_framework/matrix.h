@@ -22,6 +22,10 @@ void matrixSetRotation(Matrix matrix, float x, float y, float z);
 
 void matrixSetProduct(Matrix matrix, Matrix left, Matrix right);
 
+void matrixSetOrthographicProjection(Matrix matrix, float aspect, float scale, float nearPlane, float farPlane);
+
+void matrixSetPerspectiveProjection(Matrix matrix, float aspect, float fieldOfView, float nearPlane, float farPlane);
+
 void matrixTransform(Matrix matrix, Matrix other);
 
 #endif
