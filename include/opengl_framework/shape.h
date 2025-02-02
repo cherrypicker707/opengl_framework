@@ -5,8 +5,8 @@ typedef unsigned int GLObject;
 
 typedef struct
 {
-    GLObject vertexArray, arrayBuffer, elementArrayBuffer;
     unsigned int vertexCount, indexCount;
+    GLObject vertexArray, arrayBuffer, elementArrayBuffer;
 } Shape;
 
 Shape *shapeCreateSquare();

@@ -11,6 +11,9 @@ Shape *shapeCreateSquare()
 {
     Shape *shape = malloc(sizeof(Shape));
 
+    shape->vertexCount = 4;
+    shape->indexCount = 6;
+
     glGenVertexArrays(1, &shape->vertexArray);
     glBindVertexArray(shape->vertexArray);
 
@@ -32,6 +35,9 @@ Shape *shapeCreateSquare()
 Shape *shapeCreateTexturedSquare()
 {
     Shape *shape = malloc(sizeof(Shape));
+
+    shape->vertexCount = 4;
+    shape->indexCount = 6;
 
     glGenVertexArrays(1, &shape->vertexArray);
     glBindVertexArray(shape->vertexArray);
@@ -71,5 +77,5 @@ void shapeDestroy(Shape *shape)
 void shapeDraw(Shape *shape)
 {
     glBindVertexArray(shape->vertexArray);
-    glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+    glDrawElements(GL_TRIANGLES, shape->indexCount, GL_UNSIGNED_INT, 0);
 }
